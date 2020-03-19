@@ -17,42 +17,18 @@ def print_FinancialAnalysis(Budget_data):
     # The net total amount of "Profit/Losses" over the entire period
     # Can be found by addeding all of the values in row[2]
     net_profitslosses =  "${:,.2f}".format(sum(ProfitLoses))
-
-    #def as_currency(net_profitslosses):
-        #if net_profitslosses >= 0:
-         #return '${:,.2f}'.format(net_profitslosses)
-        #else:
-         #return '-${:,.2f}'.format(-net_profitslosses)
-
+    
     #The average_change of the changes in "Profit/Losses" over the entire period
     #Can be found by a nested function for average? or Net_ProfitLoses / total_months
     average_change = "${:,.2f}".format(net_profitslosses/total_months)
-
-    #def as_currency(average_change):
-        #if average_change >= 0:
-         #return '${:,.2f}'.format(average_change)
-        #else:
-         #return '-${:,.2f}'.format(-average_change)
 
     #The greatest_increase_in_profits (date and amount) over the entire period
     #Find a formula or function that will identity the largest number in data set and identify it
     greatest_increase = "${:,.2f}".format(max(ProfitLoses))
     
-    #def as_currency(greatest_increase):
-        #if greatest_increase >= 0:
-            #return '${:,.2f}'.format(greatest_increase)
-        #else:
-            #return '-${:,.2f}'.format(-greatest_increase)
-
     #The greatest decrease in losses (date and amount) over the entire period
     #Find a formula or function that will identity the smallest number in data set and identify it
     greatest_decrease = "${:,.2f}".format(min(ProfitLoses))
-
-    #def as_currency(greatest_decrease):
-        #if greatest_decrease >= 0:
-            #return '${:,.2f}'.format(greatest_decrease)
-        #else:
-            #return '-${:,.2f}'.format(-greatest_decrease)
 
 # Read in the CSV file
 with open(budget_csv, 'r') as csvfile:
@@ -80,8 +56,9 @@ with open(budget_csv, 'a') as csvfile:
 
     # Initialize csv.writer
     csvwriter = csv.writer(csvfile, delimiter=',')
+
     # Write the first row (column headers)
     csvwriter.writerow(['Total Months', 'Total', 'Average Change', 'Greatest Increase in Profits', 'Greatest Decrease in Profits'])
 
     # Write the second row
-    csvwriter.writerows(['Total_Months', 'net_profitslosses', 'average_change', 'Greatest Increase', 'Greatest Decrease' ])
+    csvwriter.writerows(['Total_Months', 'net_profitslosses', 'average_change', 'greatest_increase', 'greatest_decrease' ])
